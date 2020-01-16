@@ -1,0 +1,28 @@
+#jxoco-modal .modal-header { border: none; padding: 0.625rem; }
+.preorder-form-box input {
+  height: 37px;
+}
+.preorder-form-box input.form-control + .form-control {
+  margin-top: 15px;
+}
+.preorder-form-box textarea {
+  min-height: 100px;
+}
+.preorder-form-box #submitPreorder {
+  width: 100%;
+  padding: 8px;
+  font-size: 15px;
+}
+.preorder-form-box .form-group.form-ok input, .preorder-form-box .form-group.form-ok textarea, .preorder-form-box .form-group.form-error input, .preorder-form-box .form-group.form-error textarea {
+  background-position: 98% 11px;
+}
+.preorder-form-box .content-description {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.datepicker:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=jxoneclickorder.css.map */

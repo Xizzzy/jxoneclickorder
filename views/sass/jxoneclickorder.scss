@@ -1,0 +1,40 @@
+#jxoco-modal .modal-header { border: none; padding: 0.625rem; }
+.preorder-form-box {
+  input {
+    height: 37px;
+    &.form-control{
+      &+.form-control {
+        margin-top: 15px;
+      }
+    }
+  }
+  textarea {
+    min-height: 100px;
+  }
+  #submitPreorder {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+  }
+  .form-group {
+    &.form-ok, &.form-error  {
+      input, textarea {
+        background-position: 98% 11px;
+      }
+    }
+  }
+  .content-description {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+#add_preorder {
+  float: right;
+}
+
+.datepicker {
+  &:hover {
+    cursor: pointer;
+  }
+}
