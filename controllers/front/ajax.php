@@ -58,11 +58,12 @@ class JXOneclickorderAjaxModuleFrontController extends ModuleFrontController
         }
         $id_cart = $context->cookie->id_cart;
         $products = array();
-        if (Tools::getValue('global') == 'false' && Tools::getValue('page_name') != 'cart') {
+        if (Tools::getValue('page_name') != 'cart') {
             $products = array(json_decode(Tools::getValue('product'), true));
             $id_cart = false;
         }
-        if (!$jxoneclickorder->createPreorder($customer, $id_cart, $products)) {
+        $id_order = $jxoneclickorder->createPreorder($customer, $id_cart, $products);
+        if (!$id_order) {
             die(json_encode(
                 array(
                     'status' => false
@@ -76,6 +77,7 @@ class JXOneclickorderAjaxModuleFrontController extends ModuleFrontController
         $content = ConfigurationCore::get('JXONECLICKORDER_SUCCESS_DESCRIPTION', $jxoneclickorder->id_lang);
         die(json_encode(
             array(
+                'id' => $id_order,
                 'status'  => true,
                 'content' => $content
             )

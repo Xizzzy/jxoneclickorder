@@ -44,7 +44,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
     public function ajaxProcessGetTemplateFieldForm()
     {
         $content = $this->module->renderTemplateFieldSettings();
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -69,7 +69,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         }
 
         $content = $this->module->renderTemplateField(get_object_vars($field));
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -170,7 +170,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         if (!$form = $this->module->getOrderForm($id_order, $status)) {
             die(json_encode(array('status' => 'false')));
         }
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -187,7 +187,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
     {
         $jxoneclickorder = new Jxoneclickorder();
         $id_order = Tools::getValue('id_order');
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -232,7 +232,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         }
 
         $ordersSum = $this->module->checkNewOrders();
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -281,7 +281,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
     {
         $ordersSum = $this->module->checkNewOrders();
         if ($ordersSum != 0) {
-            ob_end_clean();
+            if (ob_get_contents()) ob_end_clean();
             header('Content-Type: application/json');
             die(json_encode(
                 array(
@@ -306,7 +306,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         $this->module->ordersShownStatusUpdate($newOrders);
         if ($ordersSum != 0) {
             $content = $this->module->renderNewOrders($newOrders);
-            ob_end_clean();
+            if (ob_get_contents()) ob_end_clean();
             header('Content-Type: application/json');
             die(json_encode(
                 array(
@@ -360,7 +360,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         $id_order = Tools::getValue('id_order');
 
         $customer = $this->module->updateOrderCustomer($id_customer, $id_order);
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -389,7 +389,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
      */
     public function ajaxProcessLoadTab()
     {
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -415,7 +415,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
             die(json_encode(array('status' => false)));
         }
 
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -436,7 +436,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         if (count($states) == 0) {
             die(json_encode(array('status' => false)));
         }
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -516,7 +516,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         $date_to = Tools::getValue('date_to');
 
         $orders = $this->module->repository->search($word, $date_from, $date_to);
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -534,7 +534,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
     {
         $sub_tab_name = Tools::getValue('status');
         $sub_tab = $this->module->sub_tabs[$sub_tab_name];
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -559,7 +559,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
                 )
             ));
         }
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(
@@ -580,7 +580,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
         $reload = Tools::getValue('reload');
 
         if (!$id_order = $this->module->createPreorder()) {
-            ob_end_clean();
+            if (ob_get_contents()) ob_end_clean();
             header('Content-Type: application/json');
             die(json_encode(
                 array(
@@ -600,7 +600,7 @@ class AdminJxOneClickOrderController extends ModuleAdminController
             $content = $this->module->renderTab('new');
         }
 
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         header('Content-Type: application/json');
         die(json_encode(
             array(

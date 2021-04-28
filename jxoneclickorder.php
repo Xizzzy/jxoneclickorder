@@ -1303,7 +1303,8 @@ class Jxoneclickorder extends Module
             'customer_info' => $this->repository->getCustomer($id_order),
             'countries' => CountryCore::getCountries($this->id_lang),
             'products' => $cart->getProducts(),
-            'total_price' => $this->getOrderTotalPrice($order->id_cart)
+            'total_price' => $this->getOrderTotalPrice($order->id_cart),
+            'table' => 'configuration' // Исправлена ошибка, при которой не отображались заказы в бэк-офисе. configuration взят из формы, которая открывалась по-умолчанию
         ));
 
         return $this->display($this->_path, 'views/templates/admin/controllers/layouts/new.tpl');
